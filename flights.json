@@ -1,0 +1,56 @@
+{
+    "flights": [
+      {
+        "flightNumber": "BA123",
+        "airline": "British Airways",
+        "departure": "London Heathrow",
+        "destination": "New York JFK",
+        "departureTime": "2023-12-01T08:00:00",
+        "arrivalTime": "2023-12-01T12:00:00",
+        "fare": 600,
+        "availableSeats": 50
+      },
+      {
+        "flightNumber": "LH456",
+        "airline": "Lufthansa",
+        "departure": "Frankfurt",
+        "destination": "San Francisco",
+        "departureTime": "2023-12-02T10:30:00",
+        "arrivalTime": "2023-12-02T16:30:00",
+        "fare": 800,
+        "availableSeats": 30
+      },
+      {
+        "flightNumber": "EK789",
+        "airline": "Emirates",
+        "departure": "Dubai",
+        "destination": "Sydney",
+        "departureTime": "2023-12-03T15:45:00",
+        "arrivalTime": "2023-12-04T08:30:00",
+        "fare": 1200,
+        "availableSeats": 20
+      },
+      {
+        "flightNumber": "AA234",
+        "airline": "American Airlines",
+        "departure": "Los Angeles",
+        "destination": "Tokyo",
+        "departureTime": "2023-12-05T12:15:00",
+        "arrivalTime": "2023-12-06T18:45:00",
+        "fare": 1000,
+        "availableSeats": 40
+      },
+      {
+        "flightNumber": "SQ567",
+        "airline": "Singapore Airlines",
+        "departure": "Singapore",
+        "destination": "London Heathrow",
+        "departureTime": "2023-12-07T20:00:00",
+        "arrivalTime": "2023-12-08T05:30:00",
+        "fare": 900,
+        "availableSeats": 25
+      }
+     
+    ]
+  }
+  

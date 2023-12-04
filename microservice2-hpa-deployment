@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservice2-hpa-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: microservice2-hpa-deployment
+  template:
+    metadata:
+      labels:
+        run: microservice2-hpa-deployment
+    spec:
+      containers:
+        - name: microservice2-hpa-deployment
+          image: sindhuverticurl/flightapp
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: "100m"
+            requests:
+              cpu: "100m"

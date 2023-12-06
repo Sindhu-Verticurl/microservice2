@@ -1,2 +1,2 @@
 Flask
-sonarqube-scanner
+sonar-scanner

@@ -1,0 +1,48 @@
+pipeline {
+    agent any
+    
+    environment {
+        DOCKER_HUB = 'sindhuverticurl' // Replace with your Docker Hub username
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                git branch: 'main', credentialsId: 'Github-micro', url: 'https://github.com/Sindhu-Verticurl/microservice2.git'
+                // Add other build steps here
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    docker.build('sindhuverticurl/flightapp')
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub') {
+                        docker.image('sindhuverticurl/flightapp').push('latest')
+                    }
+                }
+            }
+        }
+
+         stage('SonarQube Analysis') {
+             steps {
+                 script {
+                    def scannerHome = tool 'sonarscanner'
+                   withCredentials([string(credentialsId: 'sonar-project-key', variable: 'SONAR_PROJECT_KEY')]) {
+                         withSonarQubeEnv('sonarserver') {
+                        sh "${scannerHome}/bin/sonar-scanner \
+                               -Dsonar.projectKey=$SONAR_PROJECT_KEY \
+                                -Dsonar.sources=."
+                         }
+                    }
+               }
+            }
+         }
+
+        stage('Deploy to Kubernetes Cluster') {
+            steps {
+                sh 'kubectl run micro2filght --image=sindhuverticurl/flightapp:latest'
+            }
+        }
+    }
+}
